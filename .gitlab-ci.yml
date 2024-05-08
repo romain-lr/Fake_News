@@ -1,0 +1,17 @@
+stages:
+  - test_connectivity
+  - test
+
+image: python:3.9  
+
+test_connectivity:
+  stage: test_connectivity
+  script:
+    - echo "Verification of Network access..."
+    - curl -I https://www.google.com
+
+test:
+  stage: test
+  script:
+    - pip install numpy pandas googletrans pytest scikit-learn  
+    - pytest mes_test.py  
